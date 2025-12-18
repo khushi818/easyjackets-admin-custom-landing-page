@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Order <%= data.orderId %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size : small;
+            margin: 20px;
+        }
+        .header {
+            text-align: center;
+        }
+        .header img {
+            max-width: 100px;
+        }
+        .order-details, .product-list {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="./Header-logo.png" alt="Company Logo" />
+        <h1>EASYJACKETS</h1>
+    </div>
+
+    <div class="order-details">
+        <h2>Order Details</h2>
+        <p><strong>Order ID:</strong> <%= data?.orderId %></p>
+        <p><strong>Order Date:</strong> <%= new Date(data?.createdAt).toLocaleDateString() %></p>
+        <p><strong>Total Amount:</strong> $<%= data?.totalAmount %></p>
+        <p><strong>Status:</strong> <%=data?.status %></p>
+    </div>
+
+    <div class="product-list">
+        <h2>Product List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data?.cartData.forEach(product => { %>
+                    <tr>
+                        <td><%= product?.name %></td>
+                        <td><%= product?.quantity %></td>
+                        <td>$<%= product?.price %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="total">
+        <h2>Total: $<%= data.totalAmount %></h2>
+    </div>
+</body>
+</html>

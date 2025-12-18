@@ -1,0 +1,248 @@
+@import "../../assets/scss/variables";
+
+.cjd-header {
+  display: flex;
+  //align-items: center;
+  width: 100%;
+  height: $header-height;
+  background-color: $header;
+  border-bottom: $bc;
+}
+
+.cjd-mono-wrapper {
+  width: 13%;
+  height: 100%;
+  background-color: $primary-inside;
+  border-right: $bc;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: auto;
+  }
+}
+
+.cjd-header-actions {
+  margin-left: auto;
+  padding-right: 30px;
+  width: 20%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+
+  .cjd-btn + .cjd-btn {
+    margin-left: 10px;
+  }
+
+  button .cjd-price-wrapper {
+    display: none;
+  }
+
+  .current-mobile {
+    display: none;
+  }
+
+  @include respond-to("medium") {
+    position: fixed;
+    padding: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    z-index: 1;
+
+    .cjd-price-wrapper {
+      display: none;
+    }
+
+    button,
+    button:hover {
+      padding-left: 50px;
+      width: 100%;
+      height: 60px;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-align: left;
+      line-height: 1.6;
+      //background-image: url(../../../assets/images/icon-cart.svg);
+      background-repeat: no-repeat;
+      background-position: 20px center;
+      background-size: 20px;
+
+      .cjd-price-wrapper {
+        position: absolute;
+        display: block;
+        top: 50%;
+        right: 0;
+        padding: 3px 10px;
+        background-color: $white;
+        transform: translate(0, -50%);
+        border-radius: 5px;
+
+        strong {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+
+.cjd-price-wrapper {
+  margin-right: 10px;
+  font-size: 35px;
+  font-weight: 500;
+  color: $black;
+
+  span {
+    margin: 0 5px;
+  }
+
+  .old {
+    text-decoration: line-through;
+    color: lighten($color: #000000, $amount: 50%);
+  }
+
+  .current {
+    color: $black;
+  }
+}
+
+.cjd-tab-span {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+  background-color: $primary-stroke;
+  padding: 4px;
+  margin-left: -22px;
+  margin-right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cjd-card-span {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 4px;
+  margin-left: -10px;
+}
+
+.cjd-jackets-tabs {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  margin-left: 10px;
+  height: 100%;
+  width: 67%;
+
+  //width: calc(100% - 354px);
+  //border-right: $bc;
+
+  @include respond-to("medium") {
+    margin-right: 0;
+    width: calc(100% - 90px);
+    border-right: none;
+  }
+
+  .cjd-scroll {
+    display: flex;
+    flex-direction: row;
+    // width: calc(100% - 70px);
+    height: 100%;
+    overflow-x: auto;
+  }
+
+  .cjd-jacket-tab-item {
+    margin-bottom: auto;
+    margin-top: auto;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    //margin-top: 10px;
+    height: calc(100% - 5px);
+    border: 1px solid $primary-stroke;
+    cursor: pointer;
+    scrollbar-width: thin; /* Customize the width of the scrollbar (not supported in all browsers) */
+
+    h4 {
+      margin: 0;
+      margin-top: 1px;
+      font-size: 18px;
+      white-space: nowrap;
+      color: $primary-stroke;
+    }
+
+    + .cjd-jacket-tab-item {
+      margin-left: 10px;
+    }
+
+    &.cjd-active {
+      background-color: $primary-inside;
+    }
+  }
+
+  .cjd-add-more {
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    //width: 50px;
+    background: $primary-stroke url("../../../assets/images/icon-add.svg")
+      center center no-repeat;
+    background-size: 15px;
+    cursor: pointer;
+  }
+
+  .cjd-remove {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background: transparent url("../../../assets/images/icon-delete.svg") center
+      center no-repeat;
+    background-size: 20px;
+  }
+
+  .cjd-rename {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background: transparent url("../../../assets/images/icon-edit.svg") center
+      center no-repeat;
+    background-size: 15px;
+  }
+}
+
+.cjd-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($white, 0.9);
+  z-index: 1;
+
+  .cjd-loading-msg {
+    position: absolute;
+    margin-top: 50px;
+    top: 50%;
+    left: 50%;
+    font-size: 16px;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include respond-to("medium") {
+  .cjd-jackets-tabs {
+    justify-content: space-between;
+  }
+}

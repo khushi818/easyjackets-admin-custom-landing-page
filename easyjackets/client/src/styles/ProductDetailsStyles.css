@@ -1,0 +1,125 @@
+.product-details {
+    margin-top: 100px !important;
+  }
+  
+  .product-details-info {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+  }
+  
+  .product-details-info h6 {
+    margin-bottom: 20px !important;
+  }
+  
+  .similar-products .card {
+    background-color: rgba(128, 128, 128, 0.097);
+    width: 18rem;
+  }
+  
+  .similar-products .card-name-price {
+    
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .similar-products .card-price {
+    font-weight: bold;
+  }
+  .similar-products button {
+    border-radius: 0;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .similar-products .card-text {
+    color: rgb(90, 89, 89);
+  }
+  
+  .similar-products .card img:hover {
+    transform: scale(0.9);
+  }
+  
+  .similar-products .card-img-top {
+    height: 300px !important;
+  }
+  .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product-details {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-details-info {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.product-details h1 {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+}
+
+.product-details h5, .product-details p {
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+}
+
+.product-details button {
+    background: #007bff;
+    border: none;
+    transition: background 0.3s;
+}
+
+.product-details button:hover {
+    background: #0056b3;
+}
+.product-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%; /* Ensure it takes the full width of its container */
+   /* Optional: to limit the width for demonstration */
+}
+
+.product-img {
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: auto;
+  display: block; /* Ensures the image scales properly */
+  border-radius: 10px;
+}
+
+.product-img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.product-img-container:hover .product-img {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-img-container:hover .product-img-overlay {
+  opacity: 1;
+}
+

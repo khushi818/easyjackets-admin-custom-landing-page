@@ -1,0 +1,250 @@
+@import './assets/scss/variables';
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Radnika, -apple-system, BlinkMacSystemFont, Arial, Helvetica,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // overflow: hidden;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #000000;
+  background-color: $bg;
+}
+
+body.admin-bar #cjd-root {
+  top: 32px;
+
+  @include respond-to('medium') {
+    top: 32px;
+  }
+}
+
+.cjd-hide-overflow {
+  overflow: hidden;
+}
+
+.cjd-hide {
+  display: none;
+}
+
+body.woocommerce-cart svg.cjd-hide {
+  display: block;
+}
+
+.cjd-btn-group {
+  display: flex;
+  width: 100%;
+
+  .cjd-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+.cjd-btn {
+  //display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 45px !important;
+  align-items: center;
+  border: none;
+  padding: 10px 20px 8px;
+  margin: 0;
+  text-decoration: none;
+  background: $secondry-stroke;
+  color: #ffffff;
+  font-family: NeueEinstellung, -apple-system, BlinkMacSystemFont, Arial,
+    Helvetica, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 45px;
+  width: 200px;
+  border-radius: 30px;
+
+  &.cjd-btn-lg {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &.cjd-btn-cart {
+    padding-right: 10px !important;
+
+  }
+
+  &.cjd-btn-ok {
+    padding-right: 0px !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 0px;
+  }
+
+  &.cjd-btn-addtocart-mobile {
+    justify-content: space-evenly;
+    width: 285px;
+    padding-left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .current-mobile {
+      color: $white;
+      display: block;
+    }
+  }
+}
+
+.cjd-btn:hover,
+.cjd-btn:focus {
+  background: $secondry-stroke;
+  opacity: 0.5;
+}
+
+.cjd-btn:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.cjd-btn:active {
+  transform: scale(0.99);
+}
+
+.cjd-btn-textcenter {
+  justify-content: center;
+  padding: 0px 0px 0px 0px !important;
+}
+
+
+.cjd-btn-secondary {
+  background-color: #6c757d;
+}
+
+.cjd-btn-secondary:hover,
+.cjd-btn-secondary:focus {
+  background-color: darken(#6c757d, 10%);
+}
+
+.cjd-btn-white,
+.cjd-btn-white:hover,
+.cjd-btn-white:focus {
+  color: $black;
+  border: $bc;
+  background-color: $white;
+}
+
+.cjd-btn-customizer {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  font-size: 17px !important;
+  font-weight: 700;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: $white;
+    background-color: $blue;
+    border-color: $blue;
+  }
+
+  @include respond-to('medium') {
+    display: inline-block;
+    margin-top: 20px;
+  }
+}
+
+#cjd-root {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+
+  @include respond-to('medium') {
+    overflow: auto;
+  }
+}
+
+// Bulk Orders
+.bulk-form-wrapper {
+  margin: 0 auto;
+  max-width: 730px;
+
+  .row+.row {
+    margin-top: 20px;
+  }
+}
+
+.switch-field {
+  display: flex;
+  overflow: hidden;
+}
+
+.switch-field input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switch-field label {
+  width: 100%;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 16px 2px;
+  margin-top: 0;
+  margin-right: 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+  cursor: pointer;
+}
+
+.switch-field input:checked+label {
+  margin-right: 0;
+  color: #fff;
+  background-color: #0069ed;
+}
+
+.custom-file-button {
+  margin: 0;
+  padding: 6px 6px 3px;
+  text-align: center;
+  border: 1px dashed #0069ed;
+  cursor: pointer;
+}
+
+.woocommerce-mini-cart-item.mini_cart_item>svg {
+  width: 70px;
+  height: 87px;
+}
+
+#st-container {
+  opacity: 1 !important;
+}

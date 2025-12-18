@@ -1,0 +1,153 @@
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: small;
+            margin: 20px;
+        }
+        .data {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .data img {
+            max-width: 100px;
+            margin: 5px;
+        }
+        .data .details {
+            margin-top: 10px;
+        }
+        .data .details p {
+            margin: 5px 0;
+        }
+        .download-links a {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="data">
+        <div class="images">
+            <img src="<%= data.custom_image %>" alt="Front Image">
+            <img src="<%= data.custom_image_back %>" alt="Back Image">
+            <img src="<%= data.custom_image_left %>" alt="Left Image">
+            <img src="<%= data.custom_image_right %>" alt="Right Image">
+        </div>
+      
+        <div class="details">
+          
+            <p><strong>Category ID:</strong><%= data.globals?.catId %></p> 
+            <p><strong>Custom Price:</strong><%= data.custom_price %></p>
+
+            <div>
+                <p style="margin-bottom: 16px;">
+                  <strong>Materials:</strong><br />
+                  Body : <span><%= data.materials.body || 'N/A' %></span><br />
+                  Sleeves : <span><%= data.materials.sleeves || 'N/A' %></span>
+                </p>
+              
+                <p style="margin-bottom: 16px;">
+                  <strong>Styles:</strong>
+                  <ul>
+                    <li><strong>Collar:</strong> <%= data.styles.collar || 'N/A' %></li>
+                    <li><strong>Sleeves:</strong> <%= data.styles.sleeves || 'N/A' %></li>
+                    <li><strong>Closure:</strong> <%= data.styles.closure || 'N/A' %></li>
+                    <li><strong>Pocket:</strong> <%= data.styles.pocket || 'N/A' %></li>
+                    <li><strong>Knit:</strong> <%= data.styles.knit || 'N/A' %></li>
+                    <li><strong>Lining:</strong> <%= data.styles.lining || 'N/A' %></li>
+                    <li><strong>Flap:</strong> <%= data.styles.flap ? 'Yes' : 'No' %></li>
+                    <li><strong>Zipout:</strong> <%= data.styles.zipout ? 'Yes' : 'No' %></li>
+                  </ul>
+                </p>
+              </div>
+              
+              <div>
+                <p style="margin-bottom: 16px;">
+                  <strong>Colors:</strong>
+                  <ul style="list-style-type: none; padding-left: 0;">
+                    <li>
+                      <strong>Body:</strong>
+                      <span style="display: inline-block; width: 20px; height: 20px; background-color: '<%= data.colors.body || '#FFFFFF' %>';"></span> 
+                      <%= data.colors.body || 'N/A' %>
+                    </li>
+                    <li>
+                      <strong>Sleeves:</strong>
+                      <span style="display: inline-block; width: 20px; height: 20px; background-color: '<%= data.colors.sleeves || '#FFFFFF' %>';"></span> 
+                      <%= data.colors.sleeves || 'N/A' %>
+                    </li>
+                    <li>
+                      <strong>Buttons:</strong>
+                      <span style="display: inline-block; width: 20px; height: 20px; background-color: '<%= data.colors.buttons || '#FFFFFF' %>';"></span> 
+                      <%= data.colors.buttons || 'N/A' %>
+                    </li>
+                    <!-- Repeat similar structure for remaining colors -->
+                  </ul>
+                </p>
+              </div>
+              
+              <div>
+                <p style="margin-bottom: 16px;">
+                  <strong>Size:</strong> <%= data.sizes.size || 'N/A' %>
+                </p>
+                <p style="margin-bottom: 16px;">
+                  <strong>Price:</strong> $<%= data.custom_price || 'N/A' %>
+                </p>
+              
+                
+                <p style="margin-bottom: 16px;">
+                  <strong>Advance Options:</strong>
+                  <ul>
+                    <li>Chest Pocket: <%= data.advance.chestPocket ? 'Yes' : 'No' %></li>
+                    <li>Sleeve Pocket: <%= data.advance.sleevePocket ? 'Yes' : 'No' %></li>
+                    <li>Stripes: <%= data.advance.stripes ? 'Yes' : 'No' %></li>
+                    <li>Piping: <%= data.advance.piping ? 'Yes' : 'No' %></li>
+                  </ul>
+                </p>
+              
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">Designs Table</h2> 
+                <table cellpadding="8" cellspacing="0" style="width: 80%; border-collapse: collapse;">
+                  <thead style="background-color: #333; color: #fff;">
+                    <tr>
+                      <th>Section</th>
+                      <th>Done</th>
+                      <th>Title</th>
+                      <th>Size</th>
+                      <th>Font</th>
+                      <th>Fill Color</th>
+                      <th>Stroke Color</th>
+                      <th>Appearance</th>
+                    </tr>
+                  </thead>
+                   <tbody>
+                    <% if (data && data.designs) { %>
+                        <% Object.keys(data.designs).forEach(section => { %>
+                          <% if (typeof data.designs[section] === 'object') { %>
+                            <tr>
+                              <td><%= section %></td>
+                              <td><%= data.designs[section].done ? 'Yes' : 'No' %></td>
+                              <td><%= data.designs[section].name?.title %></td>
+                              <td><%= data.designs[section].name?.size %></td>
+                              <td><%= data.designs[section].name?.font %></td>
+                              <td>
+                                <span class="d-inline-block" style="width: 20px; height: 20px; background-color: '<%= data.designs[section].name?.fill %>'; border-radius: 4px;"></span>
+                                <%= data.designs[section].name?.fill %>
+                              </td>
+                              <td>
+                                <span class="d-inline-block" style="width: 20px; height: 20px; background-color: '<%= data.designs[section].name?.stroke %>; border-radius: 4px';"></span>
+                                <%= data.designs[section].name?.stroke %>
+                              </td>
+                              <td><%= data.designs[section].name?.appearance || 'None' %></td>
+                            </tr>
+                          <% } %>
+                        <% }); %>
+                      <% } %>
+                  </tbody> 
+                </table> 
+              </div>
+
+              
+    </div>
+</body>
+</html>
